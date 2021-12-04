@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import CountUp from "react-countup";
@@ -7,6 +7,7 @@ import CircleIconSvg from "../../svg/circleIcon";
 
 interface DailyCovidTotalProps {
   covidToday: number | undefined;
+  provinces: string;
 }
 
 const useStyles = makeStyles({
@@ -14,7 +15,6 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    height: "90vh",
   },
   boxItem: {
     position: "absolute",
@@ -28,8 +28,13 @@ const useStyles = makeStyles({
   },
 });
 
-const DialyCovidTotal: React.FC<DailyCovidTotalProps> = ({ covidToday }) => {
+const DialyCovidTotal: React.FC<DailyCovidTotalProps> = ({
+  covidToday,
+  provinces,
+}) => {
   const classes = useStyles();
+
+  useEffect(() => {}, [covidToday]);
 
   return (
     <Box className={classes.rootBox}>
@@ -43,6 +48,11 @@ const DialyCovidTotal: React.FC<DailyCovidTotalProps> = ({ covidToday }) => {
           decimal=","
           className={classes.total}
         />
+
+        <Typography variant="body2">
+          <b>จังหวัด: </b>
+          {provinces}
+        </Typography>
       </Box>
       <CircleIconSvg />
     </Box>

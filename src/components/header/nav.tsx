@@ -1,10 +1,13 @@
 import React from "react";
-import Box from "@mui/material/Box";
+import SelectProvinces from "./selectProvinces";
+
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import moment from "moment";
 import "moment/locale/th";
 import { makeStyles } from "@mui/styles";
+
+import { dialyStore } from "../../stores/dailyCovidToday";
 
 const useStyles = makeStyles({
   root: {
@@ -25,14 +28,13 @@ const Nav: React.FC = () => {
   return (
     <div className={classes.root}>
       <Toolbar>
-        <Box className={classes.title}>
-          <Typography variant="h4">COVID-19</Typography>
-        </Box>
-        <Box>
-          <Typography>
-            <strong>{moment().format("lll")}</strong>
-          </Typography>
-        </Box>
+        <Typography className={classes.title} variant="h4">
+          COVID-19
+        </Typography>
+        <SelectProvinces dialyStoreProvinces={dialyStore} />
+        <Typography>
+          <strong>{moment().format("lll")}</strong>
+        </Typography>
       </Toolbar>
     </div>
   );

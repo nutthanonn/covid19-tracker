@@ -1,7 +1,7 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Main from "../components/body/main";
-import { dialyStore } from "../stores/dailyCovid";
+import { dialyStore } from "../stores/dailyCovidToday";
 
 const Home: React.FC = () => {
   return (

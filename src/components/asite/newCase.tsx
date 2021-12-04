@@ -11,7 +11,7 @@ import { RiVirusLine } from "react-icons/ri";
 import { FaViruses } from "react-icons/fa";
 import { GiLoveInjection, GiDeadHead } from "react-icons/gi";
 
-import { TotalCaseInterface } from "../../interfaces/totalCase";
+import { NewCaseInterface } from "../../interfaces/newCase";
 
 //framer-motion
 const animation = {
@@ -36,22 +36,22 @@ const useStyles = makeStyles({
   },
 });
 
-const TotalCase: React.FC<TotalCaseInterface> = ({
-  total_case,
-  total_case_excludeabroad,
-  total_death,
-  total_recovered,
+const NewCase: React.FC<NewCaseInterface> = ({
+  new_case,
+  new_case_excludeabroad,
+  new_death,
+  new_recovered,
 }) => {
   const classes = useStyles();
   const totalCaseData = [
-    total_case,
-    total_case_excludeabroad,
-    total_recovered,
-    total_death,
+    new_case,
+    new_case_excludeabroad,
+    new_recovered,
+    new_death,
   ];
   const totalCaseString = [
-    "ผู้ติดเชื้อทั้งหมด: ",
-    "ในประเทศไทย: ",
+    "ผู้ติดเชื้อรายใหม่: ",
+    "ในประเทศ: ",
     "รักษาหายแล้ว: ",
     "ผู้เสียชีวิตทั้งหมด: ",
   ];
@@ -101,4 +101,4 @@ const TotalCase: React.FC<TotalCaseInterface> = ({
   );
 };
 
-export default TotalCase;
+export default NewCase;

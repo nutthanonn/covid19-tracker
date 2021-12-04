@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Home from "./pages/home";
 import Nav from "./components/header/nav";
 import Box from "@mui/material/Box";
