@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import CountUp from "react-countup";
@@ -33,8 +33,6 @@ const DialyCovidTotal: React.FC<DailyCovidTotalProps> = ({
   provinces,
 }) => {
   const classes = useStyles();
-
-  useEffect(() => {}, [covidToday]);
 
   return (
     <Box className={classes.rootBox}>

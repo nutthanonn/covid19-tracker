@@ -29,7 +29,6 @@ const useStyles = makeStyles({
 });
 
 const Main: React.FC<MainProps> = observer(({ dialyStore }) => {
-  const [check, setCheck] = useState<boolean>(false);
   const [dataDialy, setDataDialy] = useState<DialyCovidValues>();
   const classes = useStyles();
 
@@ -41,7 +40,7 @@ const Main: React.FC<MainProps> = observer(({ dialyStore }) => {
     }
 
     fetch();
-  }, [dialyStore, check]);
+  }, [dialyStore]);
 
   useEffect(() => {
     setDataDialy(dialyStore.changeProvinces());

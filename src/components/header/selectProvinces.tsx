@@ -23,7 +23,7 @@ const SelectProvinces: React.FC<SelectProvincesProps> = ({
   dialyStoreProvinces,
 }) => {
   const classes = useStyles();
-  const [value, setValue] = useState<string>("ทั้งหมด");
+  const [value, setValue] = useState<string>("default");
   const [province, setProvince] = useState<string[]>([]);
 
   useEffect(() => {
@@ -44,7 +44,7 @@ const SelectProvinces: React.FC<SelectProvincesProps> = ({
     <Box className={classes.root}>
       <FormControl fullWidth>
         <Select value={value} onChange={changeProvinces} size="small">
-          <MenuItem value="ทั้งหมด" disabled>
+          <MenuItem value="default">
             ทั้งหมด &nbsp; <MdLocationPin />
           </MenuItem>
           {province.map((item) => {

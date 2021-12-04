@@ -41,6 +41,9 @@ export class DialyCovidImpl {
 
   @action
   changeProvinces() {
+    if (this.setProvince === "default") {
+      return this.data[0];
+    }
     const provinces = this.dataProvinces.filter((item) => {
       return item.province === this.setProvince;
     });
