@@ -1,16 +1,26 @@
-import React from "react";
-import { Button } from "antd";
-import styled from "styled-components";
+import React, { useEffect } from "react";
+import Home from "./pages/home";
+import Nav from "./components/header/nav";
+import Box from "@mui/material/Box";
+import CssBaseline from "@mui/material/CssBaseline";
+import { makeStyles } from "@mui/styles";
 
-const btn = styled.div`
-  background-color: red;
-`;
+const useStyles = makeStyles({
+  root: {
+    backgroundColor: "#f6f6f2",
+    height: "1000vh",
+  },
+});
 
-const App = () => {
+const App: React.FC = () => {
+  const classes = useStyles();
+
   return (
-    <div>
-      <p>Hello</p>
-    </div>
+    <Box className={classes.root}>
+      <Nav />
+      <CssBaseline />
+      <Home />
+    </Box>
   );
 };
 
