@@ -4,15 +4,20 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
+
 import { makeStyles } from "@mui/styles";
 import { motion } from "framer-motion";
+import { RiVirusLine } from "react-icons/ri";
+import { FaViruses } from "react-icons/fa";
+import { GiLoveInjection, GiDeadHead } from "react-icons/gi";
 
-interface TotalCase {
-  total_case: number | undefined;
-  total_case_excludeabroad: number | undefined;
-  total_death: number | undefined;
-  total_recovered: number | undefined;
-}
+import { TotalCaseInterface } from "../../interfaces/totalCase";
+
+//framer-motion
+const animation = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+};
 
 const useStyles = makeStyles({
   root: {
@@ -29,9 +34,12 @@ const useStyles = makeStyles({
     justifyContent: "center",
     alignItems: "center",
   },
+  totalCaseBox: {
+    marginTop: 50,
+  },
 });
 
-const TotalCase: React.FC<TotalCase> = ({
+const TotalCase: React.FC<TotalCaseInterface> = ({
   total_case,
   total_case_excludeabroad,
   total_death,
@@ -51,6 +59,13 @@ const TotalCase: React.FC<TotalCase> = ({
     "ผู้เสียชีวิตทั้งหมด: ",
   ];
 
+  const Icon = [
+    <RiVirusLine color="green" size="30" />,
+    <FaViruses color="green" size="30" />,
+    <GiLoveInjection color="red" size="30" />,
+    <GiDeadHead color="gray" size="30" />,
+  ];
+
   const stringFormat = (number: number | undefined) => {
     const newFormat: string | undefined = number
       ?.toFixed(2)
@@ -65,18 +80,27 @@ const TotalCase: React.FC<TotalCase> = ({
           Total Case
         </Typography>
       </Box>
-      {totalCaseData.map((item, index) => {
-        return (
-          <Card className={classes.cardTotal}>
-            <CardContent>
-              <Typography variant="h5">
-                {totalCaseString[index]}
-                <b>{stringFormat(item)}</b> ราย
-              </Typography>
-            </CardContent>
-          </Card>
-        );
-      })}
+      <Box className={classes.totalCaseBox}>
+        {totalCaseData.map((item, index) => {
+          return (
+            <motion.div
+              variants={animation}
+              animate="visible"
+              initial="hidden"
+              transition={{ duration: index * 0.5 }}
+            >
+              <Card className={classes.cardTotal}>
+                <CardContent sx={{ textAlign: "center" }}>
+                  <Typography variant="h6">
+                    {totalCaseString[index]}
+                    <b>{stringFormat(item)}</b> ราย {Icon[index]}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </motion.div>
+          );
+        })}
+      </Box>
     </Container>
   );
 };
