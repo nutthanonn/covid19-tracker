@@ -8,6 +8,7 @@ import CircleIconSvg from "../../svg/circleIcon";
 interface DailyCovidTotalProps {
   covidToday: number | undefined;
   provinces: string;
+  dateUpdate: string | undefined;
 }
 
 const useStyles = makeStyles({
@@ -31,6 +32,7 @@ const useStyles = makeStyles({
 const DialyCovidTotal: React.FC<DailyCovidTotalProps> = ({
   covidToday,
   provinces,
+  dateUpdate,
 }) => {
   const classes = useStyles();
 
@@ -51,6 +53,7 @@ const DialyCovidTotal: React.FC<DailyCovidTotalProps> = ({
           <b>จังหวัด: </b>
           {provinces}
         </Typography>
+        <Typography>ข้อมูล ณ​ วันที่: {dateUpdate}</Typography>
       </Box>
       <CircleIconSvg />
     </Box>

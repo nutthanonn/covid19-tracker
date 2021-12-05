@@ -44,7 +44,6 @@ const Main: React.FC<MainProps> = observer(({ dialyStore }) => {
 
   useEffect(() => {
     setDataDialy(dialyStore.changeProvinces());
-    console.log("Hello");
   }, [setDataDialy, dialyStore.setProvince, dialyStore]);
 
   return (
@@ -62,6 +61,7 @@ const Main: React.FC<MainProps> = observer(({ dialyStore }) => {
           <DialyCovidTotal
             covidToday={dataDialy?.new_case}
             provinces={dialyStore?.setProvince}
+            dateUpdate={dataDialy?.txn_date}
           />
         </Grid>
         <Grid item md={4}>
