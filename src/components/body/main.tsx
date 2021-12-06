@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import DialyCovidTotal from "./dialyCovidTotal";
 import TotalCase from "../asite/totalCase";
 import NewCase from "../asite/newCase";
+import MainBoxChart from "./chart/mainBoxChart";
 
 //material-ui
 import Box from "@mui/material/Box";
@@ -24,7 +25,7 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    height: "50vh",
+    minHeight: "50vh",
   },
 });
 
@@ -73,6 +74,9 @@ const Main: React.FC<MainProps> = observer(({ dialyStore }) => {
           />
         </Grid>
       </Grid>
+      <Box sx={{ border: 1 }}>
+        <MainBoxChart />
+      </Box>
     </Box>
   );
 });

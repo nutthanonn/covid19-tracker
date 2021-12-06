@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
 import MenuItem from "@mui/material/MenuItem";
+import InputLabel from "@mui/material/InputLabel";
 import { makeStyles } from "@mui/styles";
 import { MdLocationPin } from "react-icons/md";
 
@@ -23,7 +24,7 @@ const SelectProvinces: React.FC<SelectProvincesProps> = ({
   dialyStoreProvinces,
 }) => {
   const classes = useStyles();
-  const [value, setValue] = useState<string>("default");
+  const [value, setValue] = useState<string>("");
   const [province, setProvince] = useState<string[]>([]);
 
   useEffect(() => {
@@ -43,7 +44,14 @@ const SelectProvinces: React.FC<SelectProvincesProps> = ({
   return (
     <Box className={classes.root}>
       <FormControl fullWidth>
-        <Select value={value} onChange={changeProvinces} size="small">
+        <InputLabel id="select-label">เลือกจังหวัดของคุณ</InputLabel>
+        <Select
+          value={value}
+          onChange={changeProvinces}
+          size="small"
+          labelId="select-label"
+          label="เลือกจังหวัดของคุณ"
+        >
           <MenuItem value="default">
             ทั้งหมด &nbsp; <MdLocationPin />
           </MenuItem>

@@ -4,7 +4,11 @@ import Box from "@mui/material/Box";
 const BoxChart: React.FC = () => {
   return (
     <Box>
-      <p>Helo</p>
+      <Box>
+        <p>Hello</p>
+      </Box>
     </Box>
   );
 };
+
+export default BoxChart;
