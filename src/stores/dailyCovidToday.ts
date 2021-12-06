@@ -41,16 +41,17 @@ export class DialyCovidImpl {
 
   @action
   changeProvinces() {
-    if (this.setProvince === "default") {
-      return this.data[0];
+    if (this.setProvince === "ทั้งหมด") {
+      const defaultValue = this.data;
+      return defaultValue[0];
     }
     const provinces = this.dataProvinces.filter((item) => {
       return item.province === this.setProvince;
     });
 
     var newData = [{ ...provinces[0], new_recovered: 0, total_recovered: 0 }];
-
-    return newData[0];
+    const update = newData[0];
+    return update;
   }
 }
 
