@@ -1,9 +1,14 @@
 import React from "react";
-import Box from "@mui/material/Box";
-import { makeStyles } from "@mui/styles";
-import BoxChart from "./boxChart";
 import SelectTypeChart from "./selectTypeChart";
+
+//libraries
+import Box from "@mui/material/Box";
+import BoxChart from "./boxChart";
 import Toolbar from "@mui/material/Toolbar";
+import { makeStyles } from "@mui/styles";
+
+//stores
+import { timelineCaseStore } from "../../../stores/timeLineCaseStore";
 
 const useStyles = makeStyles({
   select: {
@@ -17,7 +22,7 @@ const useStyles = makeStyles({
   },
 });
 
-const MainBoxChart = () => {
+const MainBoxChart: React.FC = () => {
   const classes = useStyles();
 
   return (
@@ -25,11 +30,11 @@ const MainBoxChart = () => {
       <Toolbar>
         <Box className={classes.select} />
         <Box>
-          <SelectTypeChart />
+          <SelectTypeChart setType={timelineCaseStore} />
         </Box>
       </Toolbar>
       <Box className={classes.chartjs}>
-        <BoxChart />
+        <BoxChart Timelinestore={timelineCaseStore} />
       </Box>
     </Box>
   );
