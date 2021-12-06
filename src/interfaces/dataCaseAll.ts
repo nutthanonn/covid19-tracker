@@ -1,4 +1,4 @@
-export interface TimeLineCaseStoreInterface {
+interface dataItem {
   txn_date: string;
   province: string;
   new_case: number;
@@ -8,4 +8,9 @@ export interface TimeLineCaseStoreInterface {
   new_death: number;
   total_death: number;
   update_date: string;
+}
+
+export interface TimeLineCaseStoreInterface {
+  month: string;
+  data: dataItem[];
 }

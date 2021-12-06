@@ -79,21 +79,23 @@ const TotalCase: React.FC<TotalCaseInterface> = ({
       <Box>
         {totalCaseData.map((item, index) => {
           return (
-            <motion.div
-              variants={animation}
-              animate="visible"
-              initial="hidden"
-              transition={{ duration: index * 0.5 }}
-            >
-              <Card className={classes.cardTotal}>
-                <CardContent sx={{ textAlign: "center" }}>
-                  <Typography variant="h6">
-                    {totalCaseString[index]}
-                    <b>{stringFormat(item)}</b> ราย {Icon[index]}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </motion.div>
+            <Box key={index}>
+              <motion.div
+                variants={animation}
+                animate="visible"
+                initial="hidden"
+                transition={{ duration: index * 0.5 }}
+              >
+                <Card className={classes.cardTotal}>
+                  <CardContent sx={{ textAlign: "center" }}>
+                    <Typography variant="h6">
+                      {totalCaseString[index]}
+                      <b>{stringFormat(item)}</b> ราย {Icon[index]}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </Box>
           );
         })}
       </Box>

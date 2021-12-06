@@ -52,7 +52,7 @@ const SelectProvinces: React.FC<SelectProvincesProps> = ({
           labelId="select-label"
           label="เลือกจังหวัดของคุณ"
         >
-          <MenuItem value="default">
+          <MenuItem value="ทั้งหมด">
             ทั้งหมด &nbsp; <MdLocationPin />
           </MenuItem>
           {province.map((item) => {
