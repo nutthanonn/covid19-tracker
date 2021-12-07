@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import DialyCovidTotal from "./dialyCovidTotal";
 import TotalCase from "../asite/totalCase";
 import NewCase from "../asite/newCase";
-import MainBoxChart from "./chart/mainBoxChart";
 
 //material-ui
 import Box from "@mui/material/Box";
@@ -30,7 +29,7 @@ const useStyles = makeStyles({
 });
 
 const Main: React.FC<MainProps> = observer(({ dialyStore }) => {
-  const [dataDialy, setDataDialy] = useState<DialyCovidValues>();
+  const [dataDialy, setDataDialy] = useState<DialyCovidValues | null>(null);
   const classes = useStyles();
 
   useEffect(() => {
@@ -74,9 +73,6 @@ const Main: React.FC<MainProps> = observer(({ dialyStore }) => {
           />
         </Grid>
       </Grid>
-      <Box sx={{ border: 1 }}>
-        <MainBoxChart />
-      </Box>
     </Box>
   );
 });

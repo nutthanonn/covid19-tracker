@@ -5,12 +5,16 @@ import SelectTypeChart from "./selectTypeChart";
 import Box from "@mui/material/Box";
 import BoxChart from "./boxChart";
 import Toolbar from "@mui/material/Toolbar";
+import CssBaseline from "@mui/material/CssBaseline";
 import { makeStyles } from "@mui/styles";
 
 //stores
 import { timelineCaseStore } from "../../../stores/timeLineCaseStore";
 
 const useStyles = makeStyles({
+  tool: {
+    backgroundColor: "#ebe8e7",
+  },
   select: {
     flexGrow: 1,
   },
@@ -27,9 +31,9 @@ const MainBoxChart: React.FC = () => {
 
   return (
     <Box>
-      <Toolbar>
+      <Toolbar className={classes.tool}>
         <Box className={classes.select} />
-        <Box>
+        <Box sx={{ padding: 1 }}>
           <SelectTypeChart setType={timelineCaseStore} />
         </Box>
       </Toolbar>

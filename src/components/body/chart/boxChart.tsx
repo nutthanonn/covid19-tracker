@@ -8,6 +8,8 @@ import { Line } from "react-chartjs-2";
 import { CategoryScale } from "chart.js";
 import { TimeLineCaseAllStoreImpl } from "../../../stores/timeLineCaseStore";
 
+import { observer } from "mobx-react";
+
 interface BoxChartProps {
   Timelinestore: TimeLineCaseAllStoreImpl;
 }
@@ -18,9 +20,10 @@ const useStyles = makeStyles({
   },
 });
 
-const BoxChart: React.FC<BoxChartProps> = ({ Timelinestore }) => {
+const BoxChart: React.FC<BoxChartProps> = observer(({ Timelinestore }) => {
   const [state, setState] = useState<any>([]);
   const [month, setMonth] = useState<string[]>([]);
+  const [dayRange, setDayRange] = useState<string[]>([]);
   Chart.register(CategoryScale);
 
   useEffect(() => {
@@ -33,11 +36,19 @@ const BoxChart: React.FC<BoxChartProps> = ({ Timelinestore }) => {
     fetch();
   }, [setState, Timelinestore]);
 
+  useEffect(() => {
+    setMonth(Timelinestore.rangeDayData());
+    setState(Timelinestore.monthData());
+  }, [Timelinestore, Timelinestore.typeChart]);
+
   const data = {
     labels: month,
     datasets: [
       {
-        label: "จำนวนผู้ติดเชื้อทั้งหมดในเดือน",
+        label:
+          Timelinestore.typeChart !== "default"
+            ? "จำนวนผู้ติดเชื้อทั้งหมดต่อวัน"
+            : "จำนวนผู้ติดเชื้อทั้งหมดต่อเดือน",
         data: state,
         fill: true,
         backgroundColor: "rgba(75,192,192,0.2)",
@@ -51,6 +62,6 @@ const BoxChart: React.FC<BoxChartProps> = ({ Timelinestore }) => {
       <Line data={data} className={classes.root} />
     </Box>
   );
-};
+});
 
 export default BoxChart;

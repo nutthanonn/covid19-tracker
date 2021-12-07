@@ -47,6 +47,40 @@ export class TimeLineCaseAllStoreImpl {
     });
     return month;
   }
+
+  @action
+  monthData() {
+    if (this.typeChart === "default") {
+      return this.yearData();
+    } else {
+      const dataperday: number[] = [];
+      this.dataCaseAll.forEach((item) => {
+        if (item.month === this.typeChart) {
+          item.data.forEach((e) => {
+            dataperday.push(e.new_case);
+          });
+        }
+      });
+      return dataperday;
+    }
+  }
+
+  @action
+  rangeDayData() {
+    const day: string[] = [];
+    if (this.typeChart === "default") {
+      return this.rangeMonthData();
+    } else {
+      this.dataCaseAll.forEach((item) => {
+        if (item.month === this.typeChart) {
+          item.data.forEach((index) => {
+            day.push(index.txn_date.slice(8, 10));
+          });
+        }
+      });
+      return day;
+    }
+  }
 }
 
 export const timelineCaseStore = new TimeLineCaseAllStoreImpl();
