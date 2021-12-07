@@ -4,7 +4,6 @@ import Typography from "@mui/material/Typography";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import { makeStyles } from "@mui/styles";
-import { FaFacebook } from "react-icons/fa";
 import { HiDatabase } from "react-icons/hi";
 
 const useStyles = makeStyles({
@@ -37,7 +36,7 @@ const MainFooter: React.FC = () => {
             target="_blank"
             className={classes.Icon}
           >
-            <FaFacebook />
+            <HiDatabase />
           </Typography>
         </IconButton>
       </Toolbar>

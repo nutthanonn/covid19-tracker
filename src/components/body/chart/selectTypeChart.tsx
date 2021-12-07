@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
@@ -26,6 +26,7 @@ const SelectTypeChart: React.FC<SelectTypeChartProps> = observer(
   ({ setType }) => {
     const classes = useStyles();
     const [value, setValue] = useState<string>("default");
+    const [month, setMonth] = useState<string[]>([]);
 
     const changeType = (e: SelectChangeEvent) => {
       const valueType = e.target.value;
@@ -33,20 +34,9 @@ const SelectTypeChart: React.FC<SelectTypeChartProps> = observer(
       setType.changeTypeChart(valueType);
     };
 
-    const month: string[] = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ];
+    useEffect(() => {
+      setMonth(setType.rangeMonthData());
+    }, [setType, setType.dataCaseAll]);
 
     return (
       <Box>

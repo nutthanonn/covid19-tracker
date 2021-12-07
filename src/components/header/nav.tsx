@@ -28,13 +28,10 @@ const Nav: React.FC = () => {
   return (
     <div className={classes.root}>
       <Toolbar>
-        <Typography className={classes.title} variant="h4">
-          COVID-19
+        <Typography className={classes.title} variant="h6">
+          รายงานสถานการณ์ COVID-19 ณ วันที่ {moment().format("lll")}
         </Typography>
         <SelectProvinces dialyStoreProvinces={dialyStore} />
-        <Typography>
-          <strong>{moment().format("lll")}</strong>
-        </Typography>
       </Toolbar>
     </div>
   );

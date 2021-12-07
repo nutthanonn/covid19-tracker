@@ -23,7 +23,6 @@ const useStyles = makeStyles({
 const BoxChart: React.FC<BoxChartProps> = observer(({ Timelinestore }) => {
   const [state, setState] = useState<any>([]);
   const [month, setMonth] = useState<string[]>([]);
-  const [dayRange, setDayRange] = useState<string[]>([]);
   Chart.register(CategoryScale);
 
   useEffect(() => {
