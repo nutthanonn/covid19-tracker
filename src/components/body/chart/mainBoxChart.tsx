@@ -1,5 +1,5 @@
 import React from "react";
-import SelectTypeChart from "./selectTypeChart";
+import SelectTypeChart from "./selectMonthChart";
 
 //libraries
 import Box from "@mui/material/Box";
